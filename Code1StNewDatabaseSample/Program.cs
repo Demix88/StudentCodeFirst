@@ -23,12 +23,19 @@ namespace Code1StNewDatabaseSample
                 db.Students.Add(Student);  
                 db.SaveChanges();
                 var query=from c in db.Students
-                          orderby c.Name
+                          orderby c.Id
                           select c;
 
-            }
+               foreach (var item in query)
+                {
+                    Console.WriteLine(item.Id+" "+item.Name+" "+item.LastName);
+                }
+               Console.ReadLine();
 
+            }
+           
         }
+
     }
     public class Student
     {
@@ -42,5 +49,5 @@ namespace Code1StNewDatabaseSample
         public DbSet<Student> Students { get; set; }
 
     }
-
+    
 }
